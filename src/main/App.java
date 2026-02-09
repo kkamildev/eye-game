@@ -1,3 +1,5 @@
+package main;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -6,9 +8,11 @@ public class App extends Frame implements Runnable {
     private boolean running = true;
     private Image buffer;
     private Graphics bufferG;
+    private final Game game;
 
-    private Font baseFont;
-
+    public static int mouseX;
+    public static int mouseY;
+    public static boolean mousePressed;
 
     public App() {
         super("Gra w oczko");
@@ -21,30 +25,56 @@ public class App extends Frame implements Runnable {
 
         setVisible(true);
         setResizable(false);
-
-        // Zamknięcie okna
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
-                running = false;
-                dispose();
+                shutdown();
             }
         });
 
-        baseFont = new Font("Arial", Font.BOLD, 32);
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                mousePressed = true;
+            }
 
-        // Start pętli
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                mousePressed = false;
+            }
+        });
+
+        addMouseMotionListener(new MouseMotionAdapter() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                mouseX = e.getX();
+                mouseY = e.getY();
+            }
+
+            @Override
+            public void mouseMoved(MouseEvent e) {
+                mouseX = e.getX();
+                mouseY = e.getY();
+            }
+        });
+
+        game = new Game(this);
         new Thread(this).start();
     }
 
     @Override
     public void run() {
         while (running) {
-
             repaint();
             try {
-                Thread.sleep(16); // ~60 FPS
+                Thread.sleep(16);
             } catch (InterruptedException e) {}
+            game.update();
         }
+    }
+
+    public void shutdown() {
+        running = false;
+        dispose();
     }
 
     @Override
@@ -58,17 +88,13 @@ public class App extends Frame implements Runnable {
             buffer = createImage(getWidth(), getHeight());
             bufferG = buffer.getGraphics();
         }
-        bufferG.setFont(baseFont);
-        bufferG.setColor(Color.BLACK);
-        bufferG.fillRect(0, 0, getWidth(), getHeight());
-
-        bufferG.setColor(Color.WHITE);
-        bufferG.drawString("Gra w oczko", 10, 70);
-
+        Graphics2D g2 = (Graphics2D) bufferG;
+        game.draw(g2);
         g.drawImage(buffer, 0, 0, null);
     }
 
     public static void main(String[] args) {
         new App();
     }
+
 }
