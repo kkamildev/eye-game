@@ -2,7 +2,6 @@ package components;
 
 import java.awt.*;
 import main.App;
-import main.ContentManager.FontName;
 
 public class Button {
     public Vector2 position;
@@ -20,8 +19,10 @@ public class Button {
         g2.setStroke(new BasicStroke(3));
         if(checkCollider()) {
             g2.setColor(new Color(33, 33, 33));
-            g2.fillRect(position.x, position.y, size.x, size.y);
+        } else {
+            g2.setColor(Color.BLACK);
         }
+        g2.fillRect(position.x, position.y, size.x, size.y);
         g2.setColor(Color.white);
         g2.setFont(font);
         g2.drawString(this.text, position.x + 20, position.y + size.y - 20);

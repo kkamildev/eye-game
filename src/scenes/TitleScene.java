@@ -16,8 +16,8 @@ public class TitleScene extends Scene{
 
     public TitleScene(Game game) {
         super(game);
-        startButton = new components.Button(new Vector2(50, 170), new Vector2(200, 80), "Zagraj", Game.contentManager.getFont(ContentManager.FontName.LARGER));
-        rulesButton = new components.Button(new Vector2(50, 280), new Vector2(200, 80), "Zasady", Game.contentManager.getFont(ContentManager.FontName.LARGER));
+        startButton = new Button(new Vector2(50, 170), new Vector2(200, 80), "Zagraj", Game.contentManager.getFont(ContentManager.FontName.LARGER));
+        rulesButton = new Button(new Vector2(50, 280), new Vector2(200, 80), "Zasady", Game.contentManager.getFont(ContentManager.FontName.LARGER));
         exitButton = new Button(new Vector2(50, 390), new Vector2(200, 80), "Wyjście", Game.contentManager.getFont(ContentManager.FontName.LARGER));
     }
 
