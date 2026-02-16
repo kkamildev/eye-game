@@ -3,10 +3,17 @@ package main;
 import java.awt.*;
 import components.Button;
 import components.Vector2;
+import scenes.RulesScene;
+import scenes.Scene;
+import scenes.TitleScene;
 
 public class Game {
     private final App app;
     private static final ContentManager contentManager = new ContentManager();
+
+    private final Scene titleScene, rulesScene;
+
+    private Scene actualScene;
 
     private final Button startButton;
     private final Button rulesButton;
@@ -14,6 +21,10 @@ public class Game {
 
     public Game(App app) {
         this.app = app;
+        this.titleScene = new TitleScene(app);
+        this.rulesScene = new RulesScene(app);
+        this.actualScene = titleScene;
+
         startButton = new Button(new Vector2(50, 170), new Vector2(200, 80), "Zagraj", contentManager.getFont(ContentManager.FontName.LARGER));
         rulesButton = new Button(new Vector2(50, 280), new Vector2(200, 80), "Zasady", contentManager.getFont(ContentManager.FontName.LARGER));
         exitButton = new Button(new Vector2(50, 390), new Vector2(200, 80), "Wyjście", contentManager.getFont(ContentManager.FontName.LARGER));
