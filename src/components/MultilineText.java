@@ -5,7 +5,6 @@ import java.awt.*;
 
 public class MultilineText {
     public Vector2 position;
-    public Vector2 size;
     private final String[] rows;
     public Font font;
     public Color color;
@@ -15,6 +14,7 @@ public class MultilineText {
         this.position = position;
         this.font = font;
         this.color = color;
+        this.spacing = spacing;
     }
 
     public void draw(Graphics2D g2) {
