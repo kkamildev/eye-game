@@ -1,13 +1,23 @@
 package main;
 
 import java.awt.*;
+import java.io.IOException;
+
 import scenes.RulesScene;
 import scenes.Scene;
 import scenes.TitleScene;
 
 public class Game {
     public App app;
-    public static final ContentManager contentManager = new ContentManager();
+    public static final ContentManager contentManager;
+
+    static {
+        try {
+            contentManager = new ContentManager();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public final Scene titleScene, rulesScene;
 
