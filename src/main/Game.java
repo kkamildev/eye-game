@@ -3,6 +3,7 @@ package main;
 import java.awt.*;
 import java.io.IOException;
 
+import scenes.MainScene;
 import scenes.RulesScene;
 import scenes.Scene;
 import scenes.TitleScene;
@@ -19,7 +20,7 @@ public class Game {
         }
     }
 
-    public final Scene titleScene, rulesScene;
+    public final Scene titleScene, rulesScene, mainScene;
 
     private Scene actualScene;
 
@@ -27,6 +28,7 @@ public class Game {
         this.app = app;
         this.titleScene = new TitleScene(this);
         this.rulesScene = new RulesScene(this);
+        this.mainScene = new MainScene(this);
         this.actualScene = titleScene;
     }
     public void draw(Graphics2D g2) {

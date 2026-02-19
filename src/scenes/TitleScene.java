@@ -3,7 +3,6 @@ package scenes;
 import components.Button;
 import components.Sprite;
 import components.Vector2;
-import main.App;
 import main.ContentManager;
 import main.Game;
 
@@ -58,6 +57,9 @@ public class TitleScene extends Scene{
         }
         if(rulesButton.checkClicked()) {
             game.loadScene(game.rulesScene);
+        }
+        if(startButton.checkClicked()) {
+            game.loadScene(game.mainScene);
         }
         for(int i = 0;i<cardsSprites.length;i++) {
             if(i % 2 == 0) {
