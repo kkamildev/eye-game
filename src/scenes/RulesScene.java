@@ -15,7 +15,7 @@ public class RulesScene extends Scene{
 
     public RulesScene(Game game) {
         super(game);
-        this.closeButton = new Button(new Vector2(app.getWidth() / 2 - 100, app.getHeight() - 100), new Vector2(200, 80), "Powrót", Game.contentManager.getFont(ContentManager.FontName.LARGER));
+        this.closeButton = new Button(new Vector2(app.getWidth() / 2 - 100, app.getHeight() - 100), new Vector2(200, 80), "Powrót", ContentManager.FontName.LARGER);
         String[] rulesText = {"Celem gry jest zdobyć 21 punktów lub jak najbliżej tej wartości ale nie przekroczyć",
             "Gracz może dopierać karty i zdobywać punkty w każdej chwili można przestać dobierać",
                 "",
@@ -29,7 +29,7 @@ public class RulesScene extends Scene{
                 "",
                 "Gracz zawsze zaczyna jako pierwszy"
         };
-        this.rules = new MultilineText(rulesText, new Vector2(40, 160), Game.contentManager.getFont(ContentManager.FontName.SMALLER), Color.white, 30);
+        this.rules = new MultilineText(rulesText, new Vector2(40, 160), ContentManager.FontName.SMALLER, Color.white, 30);
     }
 
     @Override

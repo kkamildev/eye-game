@@ -2,17 +2,19 @@ package components;
 
 import java.awt.*;
 import main.App;
+import main.ContentManager;
+import main.Game;
 
 public class Button {
     public Vector2 position;
     public Vector2 size;
     public String text;
-    public Font font;
-    public Button(Vector2 position, Vector2 size, String text, Font font) {
+    private final Font font;
+    public Button(Vector2 position, Vector2 size, String text, ContentManager.FontName fontName) {
         this.position = position;
         this.size = size;
         this.text = text;
-        this.font = font;
+        this.font = Game.contentManager.getFont(fontName);
     }
 
     public void draw(Graphics2D g2) {

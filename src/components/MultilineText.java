@@ -1,18 +1,21 @@
 package components;
 
 
+import main.ContentManager;
+import main.Game;
+
 import java.awt.*;
 
 public class MultilineText {
     public Vector2 position;
     private final String[] rows;
-    public Font font;
+    private final Font font;
     public Color color;
     public int spacing;
-    public MultilineText(String[] rows, Vector2 position, Font font, Color color, int spacing) {
+    public MultilineText(String[] rows, Vector2 position, ContentManager.FontName fontName, Color color, int spacing) {
         this.rows = rows;
         this.position = position;
-        this.font = font;
+        this.font = Game.contentManager.getFont(fontName);
         this.color = color;
         this.spacing = spacing;
     }
