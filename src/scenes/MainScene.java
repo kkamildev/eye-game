@@ -40,10 +40,8 @@ public class MainScene extends Scene{
 
     @Override
     public void draw(Graphics2D g2) {
-        g2.setColor(Color.BLACK);
-        g2.fillRect(0, 0, app.getWidth(), app.getHeight());
+        super.draw(g2);
         g2.setFont(Game.contentManager.getFont(ContentManager.FontName.BASE));
-        g2.setColor(Color.WHITE);
         if(you.turn) {
             g2.drawString("Twoja kolej", 5, 70);
             g2.drawString("Punkty: " + this.you.getPoints(), 5, 110);
@@ -64,9 +62,10 @@ public class MainScene extends Scene{
             cardStack.removeFirst();
             if(this.you.getPoints() == 21) {
                 // win
+                game.loadScene(new WinScene(game, false));
             } else if(this.you.getPoints() > 21) {
                 if(this.you.checkPersianEye()) {
-                    // win
+                    game.loadScene(new WinScene(game, true));
                 } else {
                     // lose
                 }

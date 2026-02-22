@@ -32,11 +32,8 @@ public class TitleScene extends Scene{
 
     @Override
     public void draw(Graphics2D g2) {
-        g2.setColor(Color.BLACK);
-        g2.fillRect(0, 0, app.getWidth(), app.getHeight());
-
+        super.draw(g2);
         g2.setFont(Game.contentManager.getFont(ContentManager.FontName.LARGEST));
-        g2.setColor(Color.WHITE);
         g2.drawString("Gra w oczko", 10, 80);
         g2.setFont(Game.contentManager.getFont(ContentManager.FontName.SMALLER));
         startButton.draw(g2);
