@@ -16,8 +16,16 @@ public class Sprite {
         this.position = position;
         this.scale = scale;
     }
+    public Sprite(ContentManager.ImageName imageName, float scale) {
+        setImageName(imageName);
+        this.position = null;
+        this.scale = scale;
+    }
 
     public void draw(Graphics2D g2) {
+        g2.drawImage(image, position.x, position.y, (int)(this.imageSize.x * scale), (int)(this.imageSize.y * scale), null);
+    }
+    public void draw(Graphics2D g2, Vector2 position) {
         g2.drawImage(image, position.x, position.y, (int)(this.imageSize.x * scale), (int)(this.imageSize.y * scale), null);
     }
 

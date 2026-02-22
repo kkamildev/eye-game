@@ -13,6 +13,7 @@ public class App extends Frame implements Runnable {
     public static int mouseX;
     public static int mouseY;
     public static boolean mousePressed;
+    public static boolean prevMousePressed;
 
     public App() {
         super("Gra w oczko");
@@ -69,6 +70,7 @@ public class App extends Frame implements Runnable {
                 Thread.sleep(16);
             } catch (InterruptedException e) {}
             game.update();
+            prevMousePressed = mousePressed;
         }
     }
 

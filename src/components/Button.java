@@ -31,7 +31,7 @@ public class Button {
         g2.drawRect(position.x, position.y, size.x, size.y);
     }
     public boolean checkClicked() {
-        return App.mousePressed && checkCollider();
+        return App.mousePressed && !App.prevMousePressed && checkCollider();
     }
 
     private boolean checkCollider() {
