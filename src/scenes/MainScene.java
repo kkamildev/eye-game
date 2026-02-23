@@ -67,7 +67,7 @@ public class MainScene extends Scene{
                 if(this.you.checkPersianEye()) {
                     game.loadScene(new WinScene(game, true));
                 } else {
-                    // lose
+                    game.loadScene(new LoseScene(game, true));
                 }
             }
         }
