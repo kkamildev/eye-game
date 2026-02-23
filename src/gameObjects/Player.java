@@ -45,6 +45,12 @@ public class Player {
         }
         return false;
     }
+    public float checkChance() {
+        if(calculatePoints() == 0) {
+            return 1f;
+        }
+        return 1f - (calculatePoints() / 21f);
+    }
 
     public int getPoints() {
         return this.points;

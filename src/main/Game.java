@@ -2,6 +2,8 @@ package main;
 
 import java.awt.*;
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import scenes.MainScene;
 import scenes.RulesScene;
@@ -46,6 +48,17 @@ public class Game {
 
     public void loadScene(Scene scene) {
         this.actualScene = scene;
+    }
+
+    public void loadScene(Scene scene, int millisecondsDelay) {
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask(){
+            @Override
+            public void run() {
+                actualScene = scene;
+                timer.cancel();
+            }
+        }, millisecondsDelay, 1000);
     }
 
 }
