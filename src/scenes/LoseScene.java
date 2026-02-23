@@ -38,5 +38,9 @@ public class LoseScene extends Scene{
         if(exitButton.checkClicked()) {
             app.shutdown();
         }
+        if(retryButton.checkClicked()) {
+            game.loadGame();
+            game.loadScene(game.mainScene);
+        }
     }
 }

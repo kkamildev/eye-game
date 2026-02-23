@@ -20,15 +20,13 @@ public class Game {
         }
     }
 
-    public final Scene titleScene, rulesScene, mainScene;
+    public Scene titleScene, rulesScene, mainScene;
 
     private Scene actualScene;
 
     public Game(App app) {
         this.app = app;
-        this.titleScene = new TitleScene(this);
-        this.rulesScene = new RulesScene(this);
-        this.mainScene = new MainScene(this);
+        loadGame();
         this.actualScene = titleScene;
     }
     public void draw(Graphics2D g2) {
@@ -38,6 +36,12 @@ public class Game {
 
     public void update() {
         actualScene.update();
+    }
+
+    public void loadGame() {
+        this.titleScene = new TitleScene(this);
+        this.rulesScene = new RulesScene(this);
+        this.mainScene = new MainScene(this);
     }
 
     public void loadScene(Scene scene) {
