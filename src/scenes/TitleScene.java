@@ -13,6 +13,7 @@ public class TitleScene extends Scene{
     private final Button startButton;
     private final Button rulesButton;
     private final Button exitButton;
+    private final Button leaderBoardButton;
 
     private final Sprite[] cardsSprites;
     private float animationValue = 0;
@@ -27,7 +28,8 @@ public class TitleScene extends Scene{
         };
         startButton = new Button(new Vector2(50, 170), new Vector2(200, 80), "Zagraj", ContentManager.FontName.LARGER);
         rulesButton = new Button(new Vector2(50, 280), new Vector2(200, 80), "Zasady", ContentManager.FontName.LARGER);
-        exitButton = new Button(new Vector2(50, 390), new Vector2(200, 80), "Wyjście", ContentManager.FontName.LARGER);
+        leaderBoardButton = new Button(new Vector2(50, 390), new Vector2(200, 80), "Wyniki", ContentManager.FontName.LARGER);
+        exitButton = new Button(new Vector2(50, 500), new Vector2(200, 80), "Wyjście", ContentManager.FontName.LARGER);
     }
 
     @Override
@@ -39,9 +41,10 @@ public class TitleScene extends Scene{
         startButton.draw(g2);
         rulesButton.draw(g2);
         exitButton.draw(g2);
+        leaderBoardButton.draw(g2);
         g2.setFont(Game.contentManager.getFont(ContentManager.FontName.SMALLER));
-        g2.drawString("Stworzona przez:", 30, 550);
-        g2.drawString("Kamila Kijaka", 30, 580);
+        g2.drawString("Stworzona przez:", 30, 650);
+        g2.drawString("Kamila Kijaka", 30, 680);
         for (Sprite sprite : cardsSprites) {
             sprite.draw(g2);
         }
@@ -51,6 +54,11 @@ public class TitleScene extends Scene{
     public void update() {
         if(exitButton.checkClicked()) {
             app.shutdown();
+        }
+        if(leaderBoardButton.checkClicked()) {
+            game.loadScene(game.leaderBoardScene);
+            LeaderBoardScene leaderBoardScene = (LeaderBoardScene) game.leaderBoardScene;
+            leaderBoardScene.loadFromDatabase();
         }
         if(rulesButton.checkClicked()) {
             game.loadScene(game.rulesScene);

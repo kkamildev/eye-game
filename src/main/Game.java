@@ -5,10 +5,7 @@ import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import scenes.MainScene;
-import scenes.RulesScene;
-import scenes.Scene;
-import scenes.TitleScene;
+import scenes.*;
 
 public class Game {
     public App app;
@@ -22,7 +19,7 @@ public class Game {
         }
     }
 
-    public Scene titleScene, rulesScene, mainScene;
+    public Scene titleScene, rulesScene, mainScene, leaderBoardScene;
 
     private Scene actualScene;
 
@@ -44,6 +41,7 @@ public class Game {
         this.titleScene = new TitleScene(this);
         this.rulesScene = new RulesScene(this);
         this.mainScene = new MainScene(this);
+        this.leaderBoardScene = new LeaderBoardScene(this);
     }
 
     public void loadScene(Scene scene) {

@@ -57,9 +57,10 @@ public class App extends Frame implements Runnable {
                 mouseY = e.getY();
             }
         });
-
         game = new Game(this);
-        new Thread(this).start();
+        Thread t = new Thread(this);
+        t.setDaemon(true);
+        t.start();
     }
 
     @Override
@@ -72,11 +73,13 @@ public class App extends Frame implements Runnable {
             game.update();
             prevMousePressed = mousePressed;
         }
+        System.out.println("Loop ended");
     }
 
     public void shutdown() {
         running = false;
         dispose();
+        System.exit(0);
     }
 
     @Override

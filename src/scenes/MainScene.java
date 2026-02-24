@@ -7,7 +7,6 @@ import gameObjects.Player;
 import main.ContentManager;
 import main.ContentManager.ImageName;
 import main.Game;
-
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Timer;
