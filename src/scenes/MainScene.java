@@ -27,8 +27,8 @@ public class MainScene extends Scene{
         super(game);
         this.cardStack = new ArrayList<Card>();
         fillCardStack();
-        this.dealer = new Player();
-        this.you = new Player(true);
+        this.dealer = new Player("Krupier");
+        this.you = new Player(true, "Ty");
         this.dealerPlaceCardTimer = new Timer();
         this.cardTakingDisabled = false;
         this.takeCardButton = new Button(new Vector2(game.app.getWidth() / 2 - 300, game.app.getHeight() / 2 - 40),
@@ -42,18 +42,18 @@ public class MainScene extends Scene{
         super.draw(g2);
         if(you.turn) {
             g2.setFont(Game.contentManager.getFont(ContentManager.FontName.BASE));
-            g2.drawString("Twoja kolej", 5, 70);
+            g2.drawString("Twoja kolej", 800, 70);
             if(!cardTakingDisabled) {
                 takeCardButton.draw(g2);
                 passButton.draw(g2);
             }
         } else {
-            g2.drawString("Kolej krupiera", 5, 70);
+            g2.drawString("Kolej krupiera", 800, 70);
         }
-        g2.setFont(Game.contentManager.getFont(ContentManager.FontName.BASE));
-        g2.drawString("Punkty: " + this.you.getPoints(), 5, 110);
+        you.drawScore(g2, new Vector2(20, 100));
+        dealer.drawScore(g2, new Vector2(200, 100));
         you.draw(g2, new Vector2(20, 600));
-        dealer.draw(g2, new Vector2(20, 300));
+        dealer.draw(g2, new Vector2(20, 200));
     }
 
     @Override
@@ -98,12 +98,14 @@ public class MainScene extends Scene{
                     if(dealer.getPoints() == 21) {
                         // lose
                         game.loadScene(new LoseScene(game, false), 2000);
+                        dealerPlaceCardTimer.cancel();
                     } else if(dealer.getPoints() > 21) {
                         if(dealer.checkPersianEye()) {
                             game.loadScene(new LoseScene(game, false), 2000);
                         } else {
                             game.loadScene(new WinScene(game, false), 2000);
                         }
+                        dealerPlaceCardTimer.cancel();
                     }
                 } else {
                     dealerPlaceCardTimer.cancel();

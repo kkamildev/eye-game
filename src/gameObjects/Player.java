@@ -1,6 +1,8 @@
 package gameObjects;
 
 import components.Vector2;
+import main.ContentManager;
+import main.Game;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -8,15 +10,17 @@ import java.util.ArrayList;
 public class Player {
     public boolean turn;
     private int points;
+    private final String name;
     private final ArrayList<Card> playerCards;
 
-    public Player(boolean turn) {
+    public Player(boolean turn, String name) {
         this.playerCards = new ArrayList<>();
         this.points = 0;
         this.turn = turn;
+        this.name = name;
     }
-    public Player() {
-        this(false);
+    public Player(String name) {
+        this(false, name);
     }
 
     public void draw(Graphics2D g2, Vector2 position) {
@@ -24,6 +28,11 @@ public class Player {
             card.draw(g2, position);
             position.x+= 100;
         }
+    }
+
+    public void drawScore(Graphics2D g2, Vector2 position) {
+        g2.setFont(Game.contentManager.getFont(ContentManager.FontName.BASE));
+        g2.drawString(this.name + ": " + points, position.x, position.y);
     }
 
     public void addCardToDeck(Card card) {
