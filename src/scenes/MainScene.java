@@ -67,11 +67,11 @@ public class MainScene extends Scene{
             cardStack.removeFirst();
             if(this.you.getPoints() == 21) {
                 // win
-                game.loadScene(new WinScene(game, false), 2000);
+                game.loadScene(new WinScene(game, false, you.getPoints()), 2000);
                 cardTakingDisabled = true;
             } else if(this.you.getPoints() > 21) {
                 if(this.you.checkPersianEye()) {
-                    game.loadScene(new WinScene(game, true), 2000);
+                    game.loadScene(new WinScene(game, true, you.getPoints()), 2000);
                 } else {
                     game.loadScene(new LoseScene(game, true), 2000);
                 }
@@ -102,7 +102,7 @@ public class MainScene extends Scene{
                         if(dealer.checkPersianEye()) {
                             game.loadScene(new LoseScene(game, false), 2000);
                         } else {
-                            game.loadScene(new WinScene(game, false), 2000);
+                            game.loadScene(new WinScene(game, false, you.getPoints()), 2000);
                         }
                         dealerPlaceCardTimer.cancel();
                     }
@@ -111,7 +111,7 @@ public class MainScene extends Scene{
                     if(dealer.getPoints() >= you.getPoints()) {
                         game.loadScene(new LoseScene(game, false), 2000);
                     } else {
-                        game.loadScene(new WinScene(game, false), 2000);
+                        game.loadScene(new WinScene(game, false, you.getPoints()), 2000);
                     }
                 }
             }

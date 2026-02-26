@@ -10,8 +10,8 @@ import java.time.format.DateTimeFormatter;
 
 public class Score {
 
-    private String formatedDate;
-    private final int points;
+    private final String formatedDate;
+    public final int points;
     public Score(LocalDateTime date, int points) {
         this.points = points;
         DateTimeFormatter formatter =

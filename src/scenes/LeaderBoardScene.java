@@ -86,6 +86,7 @@ public class LeaderBoardScene extends Scene {
                         scores.add(new Score(localDateTime, row.getInteger("points")));
                     }
                 }
+                client.close();
             } catch (Exception e) {
                 this.errorText = "Błąd połączenia z bazą danych";
             }
