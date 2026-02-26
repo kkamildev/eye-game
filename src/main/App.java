@@ -73,7 +73,6 @@ public class App extends Frame implements Runnable {
             game.update();
             prevMousePressed = mousePressed;
         }
-        System.out.println("Loop ended");
     }
 
     public void shutdown() {
