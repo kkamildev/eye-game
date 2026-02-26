@@ -9,13 +9,14 @@ import java.awt.*;
 
 public class LoseScene extends Scene{
 
-    private final Button exitButton, retryButton;
+    private final Button exitButton, retryButton, menuButton;
     private final boolean pointsExceeded;
     public LoseScene(Game game, boolean pointsExceeded) {
         super(game);
         this.pointsExceeded = pointsExceeded;
-        this.retryButton = new Button(new Vector2(10, 190), new Vector2(200, 80), "Powtórz", ContentManager.FontName.LARGER);
-        this.exitButton = new Button(new Vector2(10, 300), new Vector2(200, 80), "Wyjście", ContentManager.FontName.LARGER);
+        this.retryButton = new Button(new Vector2(10, 240), new Vector2(200, 80), "Powtórz", ContentManager.FontName.LARGER);
+        this.menuButton = new Button(new Vector2(10, 350), new Vector2(200, 80), " Menu", ContentManager.FontName.LARGER);
+        this.exitButton = new Button(new Vector2(10, 460), new Vector2(200, 80), "Wyjście", ContentManager.FontName.LARGER);
     }
 
     @Override
@@ -29,6 +30,7 @@ public class LoseScene extends Scene{
         } else {
             g2.drawString("Miałeś za mało punktów", 10, 130);
         }
+        menuButton.draw(g2);
         exitButton.draw(g2);
         retryButton.draw(g2);
     }
@@ -41,6 +43,10 @@ public class LoseScene extends Scene{
         if(retryButton.checkClicked()) {
             game.loadGame();
             game.loadScene(game.mainScene);
+        }
+        if(menuButton.checkClicked()) {
+            game.loadGame();
+            game.loadScene(game.titleScene);
         }
     }
 }

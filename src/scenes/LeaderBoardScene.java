@@ -37,7 +37,7 @@ public class LeaderBoardScene extends Scene {
     public void draw(Graphics2D g2) {
         super.draw(g2);
         g2.setFont(Game.contentManager.getFont(ContentManager.FontName.LARGEST));
-        g2.drawString("Wyniki", 10, 80);
+        g2.drawString("Wyniki (zwycięstwa)", 10, 80);
         g2.setFont(Game.contentManager.getFont(ContentManager.FontName.SMALLER));
 
         g2.setStroke(new BasicStroke(4));

@@ -24,7 +24,7 @@ public class WinScene extends Scene{
 
     private final boolean persianEye;
 
-    private final Button exitButton, retryButton;
+    private final Button exitButton, retryButton, menuButton;
 
     private String savingResultText = "";
 
@@ -32,7 +32,8 @@ public class WinScene extends Scene{
         super(game);
         this.persianEye = persianEye;
         this.retryButton = new Button(new Vector2(10, 240), new Vector2(200, 80), "Powtórz", ContentManager.FontName.LARGER);
-        this.exitButton = new Button(new Vector2(10, 350), new Vector2(200, 80), "Wyjście", ContentManager.FontName.LARGER);
+        this.menuButton = new Button(new Vector2(10, 350), new Vector2(200, 80), " Menu", ContentManager.FontName.LARGER);
+        this.exitButton = new Button(new Vector2(10, 460), new Vector2(200, 80), "Wyjście", ContentManager.FontName.LARGER);
         saveToDatabase(new Score(LocalDateTime.now(), playerPoints));
     }
 
@@ -49,8 +50,9 @@ public class WinScene extends Scene{
             g2.drawString("Uzyskano najbliżej 21 punktów", 10, 130);
         }
         if(!savingResultText.isEmpty()) {
-            g2.drawString(savingResultText, 10, 170);
+            g2.drawString(savingResultText, 10, 180);
         }
+        menuButton.draw(g2);
         exitButton.draw(g2);
         retryButton.draw(g2);
     }
@@ -63,6 +65,10 @@ public class WinScene extends Scene{
         if(retryButton.checkClicked()) {
             game.loadGame();
             game.loadScene(game.mainScene);
+        }
+        if(menuButton.checkClicked()) {
+            game.loadGame();
+            game.loadScene(game.titleScene);
         }
     }
 
