@@ -27,7 +27,9 @@ public class Button {
         g2.fillRect(position.x, position.y, size.x, size.y);
         g2.setColor(Color.white);
         g2.setFont(font);
-        g2.drawString(this.text, position.x + 15, position.y + size.y - 20);
+        FontMetrics fm = g2.getFontMetrics();
+        int textWidth = fm.stringWidth(text);
+        g2.drawString(this.text, position.x + size.x / 2 - textWidth / 2, position.y + size.y - 20);
         g2.drawRect(position.x, position.y, size.x, size.y);
     }
     public boolean checkClicked() {

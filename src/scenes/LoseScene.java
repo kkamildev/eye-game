@@ -15,7 +15,7 @@ public class LoseScene extends Scene{
         super(game);
         this.pointsExceeded = pointsExceeded;
         this.retryButton = new Button(new Vector2(10, 240), new Vector2(200, 80), "Powtórz", ContentManager.FontName.LARGER);
-        this.menuButton = new Button(new Vector2(10, 350), new Vector2(200, 80), " Menu", ContentManager.FontName.LARGER);
+        this.menuButton = new Button(new Vector2(10, 350), new Vector2(200, 80), "Menu", ContentManager.FontName.LARGER);
         this.exitButton = new Button(new Vector2(10, 460), new Vector2(200, 80), "Wyjście", ContentManager.FontName.LARGER);
     }
 

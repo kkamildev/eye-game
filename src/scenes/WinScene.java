@@ -14,11 +14,6 @@ import org.bson.Document;
 import java.awt.*;
 import java.time.Instant;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.Date;
-
-import static com.mongodb.client.model.Sorts.descending;
 
 public class WinScene extends Scene{
 
@@ -32,7 +27,7 @@ public class WinScene extends Scene{
         super(game);
         this.persianEye = persianEye;
         this.retryButton = new Button(new Vector2(10, 240), new Vector2(200, 80), "Powtórz", ContentManager.FontName.LARGER);
-        this.menuButton = new Button(new Vector2(10, 350), new Vector2(200, 80), " Menu", ContentManager.FontName.LARGER);
+        this.menuButton = new Button(new Vector2(10, 350), new Vector2(200, 80), "Menu", ContentManager.FontName.LARGER);
         this.exitButton = new Button(new Vector2(10, 460), new Vector2(200, 80), "Wyjście", ContentManager.FontName.LARGER);
         saveToDatabase(new Score(LocalDateTime.now(), playerPoints));
     }
