@@ -27,6 +27,7 @@ public class Game {
         this.app = app;
         loadGame();
         this.actualScene = titleScene;
+        app.setIconImage(contentManager.getImage(ContentManager.ImageName.HEART_AS));
     }
     public void draw(Graphics2D g2) {
         g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
