@@ -27,4 +27,4 @@ git clone https://github.com/kkamildev/eye-game.git
 mongodb://localhost:27017
 ```
 ## 👦 Authors
-- Kamil Kijak ```(solo developer)```
+- Kkamildev ```(solo developer)```
